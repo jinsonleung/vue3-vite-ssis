@@ -19,9 +19,21 @@ const routes = [
 ];
 
 const router = createRouter({
-  // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
   history: createWebHashHistory(),
   routes, // short for `routes: routes`
 });
+
+
+// 路由前置守卫
+router.beforeEach(function (to, from, next) {
+  // 你需要在跳转路由前做点啥
+  next();           // next()函数为必须，在前置守卫结束的时候必须进行next来决定路由走向，不然会发生死循环
+})
+
+// 路由后置守卫
+router.afterEach(() => {
+  // 你需要做点啥，在跳转路由之后，这里不需要next()方法
+})
+
 
 export default router;

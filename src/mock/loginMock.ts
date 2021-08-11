@@ -10,5 +10,4 @@ function loginMock(){
     return loginData
 }
 
-
 export { loginMock }

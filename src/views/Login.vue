@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { ref, defineComponent, getCurrentInstance } from "vue"
-import "../mock/mockServer"
+import "@/mock/mockServer"
 
 
 export default defineComponent({
