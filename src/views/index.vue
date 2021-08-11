@@ -11,38 +11,19 @@
   <div>
     <h1>==INDEX PAGE==</h1>
     <hr />
-    1、mockjs test <br>
-    <button @click="getMockData">get mock data</button>
   </div>
 </template>
 
 <script lang="ts">
 import { log } from "util";
 import { ref, defineComponent } from "vue"
-import axios from "_axios@0.21.1@axios";
-import '../mock/index.ts'
-
 
 export default defineComponent({
   name: "Index",
   setup() {
     const refData = ref(0);
-    const getMockData = () => {
-      console.log('show mock data')
-      //axios()
-      axios("/api/getUsers")
-          .then(response => {
-              console.log(response);
-              //response.json()
-          })
-          .then(data => {
-              // console.log('error');
-              console.log(data)
-          })
-    };
     return {
       refData,
-      getMockData,
     };
   },
 });

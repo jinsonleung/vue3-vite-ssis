@@ -8,19 +8,43 @@
 -->
 
 <template>
-  <div>==LOGIN PAGE==</div>
+  <div>
+   <h1>==LOGIN PAGE==</h1>
+   <hr>
+   <button @click="getLoginMock">get login data</button>
+  </div>
+
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent, getCurrentInstance } from "vue"
+import "../mock/mockServer"
+
+
 export default defineComponent({
   name: "Login",
   setup() {
-    const refData = ref(0);
+    const refData = ref(0)
+    const { proxy }: any  = getCurrentInstance()
+    const getLoginMock = ()=>{
+      proxy.$axios.get('/user/info').then((res:any)=>{
+        console.log('========res.data=========');
+        console.log(res.data);
+      })
+    }
     return {
       refData,
+      getLoginMock,
     };
   },
 });
 </script>
-<style></style>
+<style scoped lang='scss'>
+  h1 {
+    color: green;
+    font-size: unit($number: 12);
+  }
+  button {
+    background-color: violet;
+  }
+</style>
