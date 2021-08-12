@@ -2,20 +2,24 @@
  * @Author: JinsonLiang
  * @Date: 2021-07-05 09:44:52
  * @LastEditors: JinsonLiang
- * @LastEditTime: 2021-07-05 14:20:18
+ * @LastEditTime: 2021-08-12 15:43:03
  * @Description: file content
- * @FilePath: \vue3-vite-test\src\router\index.ts
+ * @FilePath: \vue3-vite-ssis\src\router\index.ts
  */
 
 import { createRouter, createWebHashHistory } from "vue-router";
-import Home from "../views/Home.vue";
-import Login from "../views/Login.vue";
-import Index from "../views/index.vue";
+import Home from "@/views/Home.vue";
+import Login from "@/views/Login.vue";
+import Index from "@/views/index.vue";
+import TestAxios from "@/views/TestAxios.vue"
+import Env from "@/views/Env.vue"
 
 const routes = [
-  { path: "/", component: Index },
-  { path: "/login", component: Login },
-  { path: "/home", component: Home },
+  { path: "/", component: Index },  //默认页面
+  { path: "/login", component: Login }, //登录页面
+  { path: "/home", component: Home }, //主界面页面
+  { path: "/testaxios", component: TestAxios }, //axios 测试页面
+  { path: "/env", component: Env }, //获取环境变量页面
 ];
 
 const router = createRouter({
