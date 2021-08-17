@@ -12,7 +12,7 @@ import Home from "@/views/Home.vue";
 import Login from "@/views/Login.vue";
 import Index from "@/views/index.vue";
 import TestAxios from "@/views/TestAxios.vue"
-import Env from "@/views/Env.vue"
+import Env from "@/views/env/index.vue"
 
 const routes = [
   { path: "/", component: Index },  //默认页面
