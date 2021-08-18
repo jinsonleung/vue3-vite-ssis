@@ -49,6 +49,7 @@ instance.interceptors.request.use(
 // 响应拦截器，response为响应的结构组织，包括data，headers，status，statusText，config，request
 instance.interceptors.response.use(
   (response) => {
+    console.log(response.data)  //控制台输出
     // 后台返回数据
     const data = response.data;
     // 这个状态码和提示信息是和后端约定的

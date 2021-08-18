@@ -11,13 +11,15 @@
   <div>
     <h1>==AXIOS TEST PAGE==</h1>
     <hr />
-    <button @click="getLoginMock">test axios</button>
+    <button @click="getLoginMock">axios原始</button>
+    <button @click="getLoginMock2">axios二次封装</button>
   </div>
 </template>
 
   <script lang="ts">
-import { ref, defineComponent, getCurrentInstance } from "vue";
-import "@/mock/mockServer";
+import { ref, defineComponent, getCurrentInstance } from "vue"
+import "@/mock/mockServer"
+import http from "@/utils/http2/index"
 
 export default defineComponent({
   name: "Login",
@@ -26,13 +28,23 @@ export default defineComponent({
     const { proxy }: any = getCurrentInstance();
     const getLoginMock = () => {
       proxy.$axios.get("/user/info").then((res: any) => {
-        console.log("========res.data=========");
+        console.log("==这是原始axios请求返回的数据==");
         console.log(res.data);
       });
     };
+
+    const getLoginMock2 = () => {
+      http.get("/user/info").then((res: any) => {
+        console.log("==这是axios二次封装请求返回的数据==");
+        console.log(res.data);
+      });
+    };
+
+
     return {
       refData,
       getLoginMock,
+      getLoginMock2,
     };
   },
 });
