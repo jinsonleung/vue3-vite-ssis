@@ -11,9 +11,10 @@
   <div>
     <h3>==ENV INFOMATION PAGE==</h3>
     <hr>
-    <!-- Current env_title: {{ env_title }} <br>
-    Current env_base_api: {{ env_base_api }} <br>
-    Current env_base_url: {{ env_base_url }} -->
+    MODE: {{ env.MODE }} <br>
+    PORT_STRING: {{ env.PORT_STRING }} <br>
+    APP_BASE_API: {{ env.APP_BASE_API }} <br>
+    APP_BASE_URL: {{ env.APP_BASE_URL }}
   </div>
 </template>
 

@@ -18,7 +18,7 @@ import { IEnv }  from '@/type/store/interface'  //引入环境变量接口
  */
 export function envs(): IEnv {
     let env: IEnv = {
-        MODE: import.meta.env.MODE,
+        MODE: import.meta.env.MODE, //import.meta.env.MODE,
         PORT: 3305,
         // @ts-ignore
         PORT_STRING: import.meta.env.VITE_PORT || '3305',
