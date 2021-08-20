@@ -42,7 +42,7 @@ http.interceptors.request.use((config: AxiosRequestConfig)=> {
     if(token) {
         //config.headers['Authorization'] = getlocalToken().
     }
-
+    // console.log(config)
     return config
 },errorHandler)
 
@@ -50,8 +50,9 @@ http.interceptors.request.use((config: AxiosRequestConfig)=> {
 // 4、response 响应拦截处理器
 http.interceptors.response.use((response: AxiosResponse<any>)=>{
     loading.close() //关闭加载动画
+    console.log("==响应拦截器起作用==");
     //console.log(response.data)  //控制台输出
-    console.log(response.status)  //测试
+    // console.log(response.status)  //测试
     if (response.status !== 200) {
         //console.log(response.data)
         if (401 === response.status) {

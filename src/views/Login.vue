@@ -52,18 +52,18 @@ export default {
         ]
       }
     })
-    const submitForm = async () => {
+    const submitForm222 = async () => {
       loginForm.value.validate((valid) => {
-        // console.log(valid)
+        console.log(valid)
         if (valid) {
           //console.log("password:", md5(state.ruleForm.password))
-          http.post('/adminUser/login', {
-          //axios.post('/adminUser/login', {
+          axios.post('/adminUser/login', {
             userName: state.ruleForm.username || '',
             passwordMd5: md5(state.ruleForm.password)
           }).then(res => {
-            localSet('token', res)
-            window.location.href = '/'
+            console.log(res.data)
+            //localSet('token', res)
+            //window.location.href = '/'
           })
         } else {
           console.log('error submit!!')
@@ -71,6 +71,32 @@ export default {
         }
       })
     }
+
+    const submitForm = async () => {
+      loginForm.value.validate((valid) => {
+        //console.log(valid)
+        if (valid) {
+          // console.log("password:", md5(state.ruleForm.password))
+          http.post('/adminUser/checkLogin', {
+            userName: state.ruleForm.username || '',
+            passwordMd5: md5(state.ruleForm.password)
+          }).then(res => {
+            console.log(res.data)
+            if (res.data.success) {
+              alert("用户及密码正确，欢迎您！")
+            }else{
+              alert("用户及密码错误！")
+            }
+            //localSet('token', res)
+            //window.location.href = '/'
+          })
+        } else {
+          console.log('error submit!!')
+          return false;
+        }
+      })
+    }
+
     const resetForm = () => {
       loginForm.value.resetFields();
     }

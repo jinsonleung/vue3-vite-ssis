@@ -10,4 +10,19 @@ function loginMock(){
     return loginData
 }
 
-export { loginMock }
+function checkLogin(req:any){
+    //console.log("red",req)
+    const {userName,passwordMd5} = JSON.parse(req.body)
+    if (userName==='admin' && passwordMd5==='e10adc3949ba59abbe56e057f20f883e') {
+        return {
+            success: true
+        }
+    } else {
+        return{
+            success: false
+        }
+    }
+}
+
+
+export { loginMock, checkLogin}
