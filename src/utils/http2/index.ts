@@ -51,6 +51,7 @@ http.interceptors.request.use((config: AxiosRequestConfig)=> {
 http.interceptors.response.use((response: AxiosResponse<any>)=>{
     loading.close() //关闭加载动画
     //console.log(response.data)  //控制台输出
+    console.log(response.status)  //测试
     if (response.status !== 200) {
         //console.log(response.data)
         if (401 === response.status) {
@@ -67,6 +68,7 @@ http.interceptors.response.use((response: AxiosResponse<any>)=>{
       }
       return response
     }, (error: AxiosResponse<any>) => {
+        console.log(error.status) //测试
         loading.close()
         if (400 === error.status) {
           ElNotification({
