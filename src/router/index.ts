@@ -15,8 +15,40 @@ import TestAxios from "@/views/TestAxios.vue"
 import Env from "@/views/env/index.vue"
 
 const routes = [
-  { path: "/", component: Index },  //默认页面
-  { path: "/login", component: Login }, //登录页面
+  { //默认页面
+    path: '/',
+    redirect: '/introduce'
+  },
+  { //登录页面
+    path: '/login',
+    name: 'Login',
+    component: ()=>import('@/views/Login.vue')
+  },
+  { //简介页面
+    path: '/introduce',
+    name: 'Introduce',
+    component: ()=>import('@/views/Introduce.vue')
+  },
+
+  { //主页面
+    path: '/home',
+    name: 'Home',
+    component: ()=>import('@/views/Home.vue')
+  },
+
+  { //axios测试页面
+    path: '/testaxios',
+    name: 'Testaxios',
+    component: ()=>import('@/views/TestAxios.vue')
+  },
+  { //获取环境变量页面
+    path: '/env',
+    name: 'Env',
+    component: ()=>import('@/views/env/index.vue')
+  },
+
+
+
   { path: "/home", component: Home }, //主界面页面
   { path: "/testaxios", component: TestAxios }, //axios 测试页面
   { path: "/env", component: Env }, //获取环境变量页面

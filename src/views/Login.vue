@@ -84,11 +84,12 @@ export default {
             console.log(res.data)
             if (res.data.success) {
               alert("用户及密码正确，欢迎您！")
+              //localSet('token', res)
+              window.location.href = '/'
             }else{
               alert("用户及密码错误！")
             }
-            //localSet('token', res)
-            //window.location.href = '/'
+
           })
         } else {
           console.log('error submit!!')
