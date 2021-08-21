@@ -17,25 +17,23 @@ import Env from "@/views/env/index.vue"
 const routes = [
   { //默认页面
     path: '/',
-    redirect: '/introduce'
+    redirect: '/home'
   },
   { //登录页面
     path: '/login',
     name: 'Login',
     component: ()=>import('@/views/Login.vue')
   },
+  { //主页面
+    path: '/home',
+    name: 'Home',
+    component: ()=>import('@/views/layout/index.vue')
+  },
   { //简介页面
     path: '/introduce',
     name: 'Introduce',
     component: ()=>import('@/views/Introduce.vue')
   },
-
-  { //主页面
-    path: '/home',
-    name: 'Home',
-    component: ()=>import('@/views/Home.vue')
-  },
-
   { //axios测试页面
     path: '/testaxios',
     name: 'Testaxios',
