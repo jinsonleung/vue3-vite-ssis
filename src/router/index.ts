@@ -1,8 +1,8 @@
 /*
  * @Author: JinsonLiang
  * @Date: 2021-07-05 09:44:52
- * @LastEditors: JinsonLiang
- * @LastEditTime: 2021-08-12 15:43:03
+ * @LastEditors: Jinson.Liang
+ * @LastEditTime: 2021-08-24 11:52:38
  * @Description: file content
  * @FilePath: \vue3-vite-ssis\src\router\index.ts
  */
@@ -28,6 +28,11 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: ()=>import('@/views/layout/index.vue')
+  },
+  { //主页面
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: ()=>import('@/views/Dashboard/dashboard.vue')
   },
   { //简介页面
     path: '/introduce',

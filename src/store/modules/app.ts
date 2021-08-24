@@ -2,7 +2,7 @@
  * @Author: Jinson.Liang
  * @Date: 2021-08-21 15:46:55
  * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-21 16:00:39
+ * @LastEditTime: 2021-08-24 11:10:35
  * @Description: 全部 app store
  * @FilePath: \vue3-vite-ssis\src\store\modules\app.ts
  */
@@ -32,7 +32,7 @@ const app = {
         }
     },
     actions: {  //通过mutaitons异步修改状态
-        tonggleSideBar(context:any,e:any){
+        toggleSidebar(context:any,e:any){
             console.log(e)  //接受的值
             context.commit('TOGGLE_SIDEBAR')
         },

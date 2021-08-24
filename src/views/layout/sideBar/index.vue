@@ -2,7 +2,7 @@
  * @Author: Jinson.Liang
  * @Date: 2021-08-21 14:38:45
  * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-21 16:19:50
+ * @LastEditTime: 2021-08-24 11:29:40
  * @Description: 左邊菜單欄
  * @FilePath: \vue3-vite-ssis\src\views\layout\sideBar\index.vue
 -->
@@ -20,36 +20,36 @@
 
             <el-menu-item index="/dashboard" >
                 <i class="ri-palette-line"></i>
-                <template #title>Dashboard</template>
+                <template #title>仪表盘</template>
             </el-menu-item>
 
             <el-submenu index>
                 <template #title>
                     <i class="ri-file-text-line"></i>
-                    <span  >Helloworld</span>
+                    <span>安全监控</span>
                 </template>
                 <el-menu-item index="/helloworld">
                     <i class="ri-code-s-slash-line"></i>
-                    <template #title>Helloworld</template>
+                    <template #title>安全事项</template>
                 </el-menu-item>
                 <el-menu-item index="/vuex">
                     <i class="ri-terminal-box-line"></i>
-                    <template #title>vuex</template>
+                    <template #title>安全标准</template>
                 </el-menu-item>
             </el-submenu>
             <el-menu-item index="/home">
                 <i class="ri-pencil-line"></i>
-                <template #title>Editor</template>
+                <template #title>场站设置</template>
             </el-menu-item>
 
             <el-menu-item index="/vue3">
                 <i class="ri-discuss-line"></i>
-                <template #title>Document</template>
+                <template #title>供应商设置</template>
             </el-menu-item>
 
             <el-menu-item index="/item">
                 <i class="ri-discuss-line"></i>
-                <template #title>Router</template>
+                <template #title>安全事故</template>
             </el-menu-item>
         </el-menu>
     </div>

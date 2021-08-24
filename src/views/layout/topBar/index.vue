@@ -1,20 +1,18 @@
 <!--
- * @Author: JinsonLiang
- * @Date: 2021-07-02 17:43:09
+ * @Author: Jinson.Liang
+ * @Date: 2021-08-21 14:38:38
  * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-21 17:02:40
- * @Description: file content
+ * @LastEditTime: 2021-08-24 11:20:30
+ * @Description: 
  * @FilePath: \vue3-vite-ssis\src\views\layout\topBar\index.vue
 -->
 <template>
     <div class="topbar-container">
-        <h1>这是topbar</h1>
         <div class="header">
-            <h2>这是header</h2>
             <div class="toggle-btn" @click="toggleSidebar">
-                <h3>这是tongle-btn</h3>
                 <i class="ri-indent-decrease ri-lg"  :class="{'ri-indent-increase':isCollapse}"></i>
             </div>
+
         </div>
     </div>
 </template>
@@ -23,13 +21,13 @@
     import {reactive,computed} from 'vue'
     import { useStore,mapGetters,mapActions } from 'vuex'
     export default {
-        name: "TopBar",
+        name: "index",
         computed:{
             ...mapGetters(['isCollapse']) // 语法糖
         },
         setup(props,context){
             const state = reactive({
-                title:'vue'
+                title:'场站安全系统'
             });
 
             const store = useStore ();
@@ -66,7 +64,6 @@
                 height: 100%;
                 float: left;
                 cursor: pointer;
-                background-color: red;// will be deleted
                 transition: background .3s;
                 :hover{
                     background: rgba(0,0,0,.025);

@@ -2,7 +2,7 @@
  * @Author: JinsonLiang
  * @Date: 2021-07-02 17:43:09
  * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-21 16:58:14
+ * @LastEditTime: 2021-08-24 11:38:09
  * @Description: file content
  * @FilePath: \vue3-vite-ssis\src\views\layout\index.vue
 -->
@@ -24,13 +24,18 @@
 
 <script lang="ts">
 import { ref, defineComponent } from "vue"
+import { mapGetters } from 'vuex'
 import SideBar from "@/views/layout/sideBar/index.vue"
 import TopBar from "@/views/layout/topBar/index.vue"
 import AppMain from "@/views/layout/appMain/index.vue"
 import FootBar from '@/views/layout/footBar/index.vue'
+
 export default defineComponent({
-  name: "Index",
+  name: "Layout",
   components: { SideBar, TopBar, AppMain, FootBar },
+  computed:{
+    ...mapGetters(['isCollapse'])
+  },
   setup() {
     const refData = ref(0);
     return {
