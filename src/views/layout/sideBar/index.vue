@@ -2,7 +2,7 @@
  * @Author: Jinson.Liang
  * @Date: 2021-08-21 14:38:45
  * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-24 15:39:57
+ * @LastEditTime: 2021-08-24 17:42:19
  * @Description: 左邊菜單欄
  * @FilePath: \vue3-vite-ssis\src\views\layout\sideBar\index.vue
 -->
@@ -65,6 +65,10 @@
             <el-menu-item index="/introduce">
                 <i class="ri-user-voice-line"></i>
                 <template #title>简介页面</template>
+            </el-menu-item>
+            <el-menu-item index="/goodlist">
+                <i class="ri-shopping-bag-2-fill"></i>
+                <template #title>商品維護</template>
             </el-menu-item>
         </el-menu>
     </div>

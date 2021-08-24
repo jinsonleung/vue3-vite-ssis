@@ -2,12 +2,12 @@
  * @Author: JinsonLiang
  * @Date: 2021-07-05 09:44:52
  * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-24 15:41:16
+ * @LastEditTime: 2021-08-24 17:41:50
  * @Description: file content
  * @FilePath: \vue3-vite-ssis\src\router\index.ts
  */
 
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/Home.vue";
 import Login from "@/views/Login.vue";
 import Index from "@/views/index.vue";
@@ -69,6 +69,12 @@ const routes = [
         component: ()=>import('@/views/Introduce.vue'),
         meta:{title:'introduce'}
       },
+      { //商品页面
+        path: '/goodlist',
+        name: 'GoodList',
+        component: ()=>import('@/views/GoodList.vue'),
+        meta:{title:'goodlist'}
+      },
       { //axios测试页面
         path: '/testaxios',
         name: 'Testaxios',
@@ -91,7 +97,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),  //去掉url中的#號
   routes, // short for `routes: routes`
 });
 
