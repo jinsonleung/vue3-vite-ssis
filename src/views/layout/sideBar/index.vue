@@ -2,7 +2,7 @@
  * @Author: Jinson.Liang
  * @Date: 2021-08-21 14:38:45
  * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-24 11:29:40
+ * @LastEditTime: 2021-08-24 15:39:57
  * @Description: 左邊菜單欄
  * @FilePath: \vue3-vite-ssis\src\views\layout\sideBar\index.vue
 -->
@@ -29,27 +29,42 @@
                     <span>安全监控</span>
                 </template>
                 <el-menu-item index="/helloworld">
-                    <i class="ri-code-s-slash-line"></i>
+                    <i class="ri-secure-payment-line"></i>
                     <template #title>安全事项</template>
                 </el-menu-item>
-                <el-menu-item index="/vuex">
-                    <i class="ri-terminal-box-line"></i>
+                <el-menu-item index="/security">
+                    <i class="ri-coupon-5-line"></i>
                     <template #title>安全标准</template>
                 </el-menu-item>
             </el-submenu>
-            <el-menu-item index="/home">
+            <el-menu-item index="/stationsetting">
                 <i class="ri-pencil-line"></i>
                 <template #title>场站设置</template>
             </el-menu-item>
 
-            <el-menu-item index="/vue3">
+            <el-menu-item index="/vendorsetting">
                 <i class="ri-discuss-line"></i>
                 <template #title>供应商设置</template>
             </el-menu-item>
 
-            <el-menu-item index="/item">
-                <i class="ri-discuss-line"></i>
+            <el-menu-item index="/securityaccident">
+                <i class="ri-briefcase-4-line"></i>
                 <template #title>安全事故</template>
+            </el-menu-item>
+
+            <el-menu-item index="/testaxios">
+                <i class="ri-cactus-fill"></i>
+                <template #title>Aciox測試</template>
+            </el-menu-item>
+
+            <el-menu-item index="/env">
+                <i class="ri-haze-fill"></i>
+                <template #title>環境變量</template>
+            </el-menu-item>
+
+            <el-menu-item index="/introduce">
+                <i class="ri-user-voice-line"></i>
+                <template #title>简介页面</template>
             </el-menu-item>
         </el-menu>
     </div>

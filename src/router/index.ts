@@ -2,7 +2,7 @@
  * @Author: JinsonLiang
  * @Date: 2021-07-05 09:44:52
  * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-24 11:52:38
+ * @LastEditTime: 2021-08-24 15:41:16
  * @Description: file content
  * @FilePath: \vue3-vite-ssis\src\router\index.ts
  */
@@ -17,44 +17,77 @@ import Env from "@/views/env/index.vue"
 const routes = [
   { //默认页面
     path: '/',
-    redirect: '/home'
+    redirect: '/dashboard',
+    name:'Dashboard',
+    component: ()=>import ('@/views/layout/index.vue'),
+    children:[
+      {
+        path:'/dashboard',
+        name: 'Dashboard',
+        component:()=>import('@/views/Dashboard/dashboard.vue'),
+        meta:{title:'dashboard'}
+      },
+      {
+        path:'/dashboard',
+        name: 'Dashboard',
+        component:()=>import('@/views/Dashboard/dashboard.vue'),
+        meta:{title:'dashboard'}
+      },
+      {
+        path:'/helloworld',
+        name: 'HelloWorld',
+        component:()=>import('@/views/helloWorld/HelloWorld.vue'),
+        meta:{title:'helloworld'}
+      },
+      {
+        path:'/security',
+        name: 'Security',
+        component:()=>import('@/views/helloWorld/Security.vue'),
+        meta:{title:'security'}
+      },
+      {
+        path:'/stationsetting',
+        name: 'StationSetting',
+        component:()=>import('@/views/stationSetting/StationSetting.vue'),
+        meta:{title:'stationsetting'}
+      },
+      {
+        path:'/securityaccident',
+        name: 'SecurityAccident',
+        component:()=>import('@/views/security/SecurityAccident.vue'),
+        meta:{title:'securityaccident'}
+      },
+      {
+        path:'/vendorsetting',
+        name: 'VendorSetting',
+        component:()=>import('@/views/vendor/VendorSetting.vue'),
+        meta:{title:'vendorsetting'}
+      },
+      { //简介页面
+        path: '/introduce',
+        name: 'Introduce',
+        component: ()=>import('@/views/Introduce.vue'),
+        meta:{title:'introduce'}
+      },
+      { //axios测试页面
+        path: '/testaxios',
+        name: 'Testaxios',
+        component: ()=>import('@/views/TestAxios.vue'),
+        meta:{title:'testaxios'}
+      },
+      { //获取环境变量页面
+        path: '/env',
+        name: 'Env',
+        component: ()=>import('@/views/env/index.vue'),
+        meta:{title:'env'}
+      },
+    ]
   },
   { //登录页面
     path: '/login',
     name: 'Login',
     component: ()=>import('@/views/Login.vue')
   },
-  { //主页面
-    path: '/home',
-    name: 'Home',
-    component: ()=>import('@/views/layout/index.vue')
-  },
-  { //主页面
-    path: '/dashboard',
-    name: 'Dashboard',
-    component: ()=>import('@/views/Dashboard/dashboard.vue')
-  },
-  { //简介页面
-    path: '/introduce',
-    name: 'Introduce',
-    component: ()=>import('@/views/Introduce.vue')
-  },
-  { //axios测试页面
-    path: '/testaxios',
-    name: 'Testaxios',
-    component: ()=>import('@/views/TestAxios.vue')
-  },
-  { //获取环境变量页面
-    path: '/env',
-    name: 'Env',
-    component: ()=>import('@/views/env/index.vue')
-  },
-
-
-
-  { path: "/home", component: Home }, //主界面页面
-  { path: "/testaxios", component: TestAxios }, //axios 测试页面
-  { path: "/env", component: Env }, //获取环境变量页面
 ];
 
 const router = createRouter({
