@@ -2,35 +2,25 @@
  * @Author: Jinson.Liang
  * @Date: 2021-08-24 17:40:54
  * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-24 17:45:12
+ * @LastEditTime: 2021-08-25 13:36:33
  * @Description: 商品列表
  * @FilePath: \vue3-vite-ssis\src\views\GoodList.vue
 -->
 
 <template>
-  <div class="app-container" >
-      <h1>==這是商品列表==</h1>
-  </div>
+  <!-- 商品列表 -->
+  <list></list>
 </template>
 
 <script lang='ts'>
 import { ref, defineComponent, onMounted } from "vue"
-import "@/mock/mockServer"
-import http from "@/utils/http2/index"
+import List from '@/components/goods/List.vue'
 
 export default defineComponent({
   name: "GoodList",
+  components: { List },
   setup() {
     const refData = ref(0);
-    onMounted(()=>{
-        http.get("/getgoodlist").then((res: any) => {
-        console.log("==这是axios二次封装请求返回的数据==");
-        console.log(res.data);
-      });
-    })
-
-
-
     return {
       refData
     };
