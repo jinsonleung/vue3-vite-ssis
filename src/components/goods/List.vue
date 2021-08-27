@@ -1,8 +1,8 @@
 <!--
  * @Author: Jinson.Liang
  * @Date: 2021-08-25 13:32:04
- * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-25 17:45:53
+ * @LastEditors: JinsonLiang
+ * @LastEditTime: 2021-08-27 18:58:26
  * @Description: 商品列表
  * @FilePath: \vue3-vite-ssis\src\components\goods\List.vue
 -->
@@ -35,6 +35,8 @@ import { ref, reactive, onMounted, defineComponent } from "vue"
 import http from '@/utils/http2/index'
 import "@/mock/mockServer"
 import { ListQuery, DataList, TableList, IdQuery } from '@/type/goods/index'
+import { Goods } from "./goods";
+import { getList } from "@/api/goods/goodsListApi";
 
 
 export default defineComponent({
@@ -56,9 +58,19 @@ export default defineComponent({
         console.log(res.data);
       });
     })
+
+    class TableClass extends Goods {}
+
+    const { searchFn, loading    } = new TableClass ({
+        Api: {
+            listApi: getList
+        }
+    })
+
     return {
       refData,
       listQuery,
+      searchFn,
     };
   }
 });
