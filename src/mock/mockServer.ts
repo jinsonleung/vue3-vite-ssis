@@ -1,14 +1,16 @@
 /*
  * @Author: Jinson.Liang
  * @Date: 2021-08-18 09:37:20
- * @LastEditors: Jinson.Liang
- * @LastEditTime: 2021-08-24 17:37:05
+ * @LastEditors: JinsonLiang
+ * @LastEditTime: 2021-08-28 15:51:34
  * @Description:
  * @FilePath: \vue3-vite-ssis\src\mock\mockServer.ts
  */
 import Mock, { mock } from "mockjs"
 import { loginMock, checkLogin} from "./loginMock"
-import { getGoodList } from "./goodList"
+import { getListData } from './goodList'
+import { ListQuery } from '@/type/goods/index'
+import { getList } from "@/api/goods/goodsListApi"
 
 
 Mock.mock("/user/info", loginMock) //用户登录mock，正确
@@ -17,6 +19,7 @@ Mock.mock("/adminUser/login", "get",loginMock) //用户登录mock，正确
 
 Mock.mock("/adminUser/checkLogin", 'post', checkLogin) //用户登录检查，正确
 
+Mock.mock(RegExp("getList" + ".*"),'get', getListData)
 // good list
-Mock.mock('/getgoodlist', getGoodList)  //獲取商品列表
+//Mock.mock('/getgoodlist', getGoodList)  //獲取商品列表
 
