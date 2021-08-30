@@ -1,3 +1,12 @@
+/*
+ * @Author: Jinson.Liang
+ * @Date: 2021-08-30 11:28:04
+ * @LastEditors: Jinson.Liang
+ * @LastEditTime: 2021-08-30 11:44:29
+ * @Description: 
+ * @FilePath: \vue3-vite-ssis\src\api\goods\goodsListApi.ts
+ */
+
 import { ListQuery,IdQuery,TableList } from "@/type/goods";
 import http from "@/utils/http2";
 import '@/mock/goodList'

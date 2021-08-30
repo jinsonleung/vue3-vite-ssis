@@ -8,9 +8,9 @@
 import Mock, { mock } from "mockjs"
 import { loginMock, checkLogin} from "./loginMock"
 import { getListData } from './goodList'
-import { ListQuery } from '@/type/goods/index'
-import { getList } from "@/api/goods/goodsListApi"
-import { getGoodsList } from "./goodsList"
+
+
+
 
 
 Mock.mock("/user/info", loginMock) //用户登录mock，正确
@@ -19,10 +19,9 @@ Mock.mock("/adminUser/login", "get",loginMock) //用户登录mock，正确
 
 Mock.mock("/adminUser/checkLogin", 'post', checkLogin) //用户登录检查，正确
 
-Mock.mock(RegExp("getList" + ".*"),'get', getListData)
+//Mock.mock(RegExp("getList" + ".*"),'get', getListData)
 
-
-//Mock.mock('/getgoodlist', getGoodList)  //獲取商品列表
+Mock.mock('/getlistdata', getListData)  //獲取商品列表
 //Mock.mock('/getGoodslist','get', getGoodsList(params: listQuery))  //獲取商品列表
 
 

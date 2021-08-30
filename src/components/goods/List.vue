@@ -1,223 +1,101 @@
+<!--
+ * @Author: Jinson.Liang
+ * @Date: 2021-08-30 11:28:04
+ * @LastEditors: Jinson.Liang
+ * @LastEditTime: 2021-08-30 17:32:32
+ * @Description:
+ * @FilePath: \vue3-vite-ssis\src\components\goods\List.vue
+-->
 <template>
     <div>
-        <div class="project-header">
-            <el-row>
-                <el-col :span="7"></el-col>
-                <el-col :span="7">
-                    <el-input
-                        size="medium"
-                        class="project-input"
-                        v-model="listQuery.goodsName"
-                        clearable
-                        @keyup.enter="searchFn(listQuery)"
-                        placeholder="请输入商品名称搜索">
-                    </el-input>
-                </el-col>
-                <el-button type="primary" size="medium" @click="searchFn(listQuery)"
-                    >查 询</el-button>
-                <el-button type="primary" size="medium" @click="addData">新 建</el-button>
-            </el-row>
-        </div>
-        <el-table v-loading="loading" :data="tableList" align="center" class="table-box">
-            <el-table-column align="center" label="商品名称" prop="goodsName"> </el-table-column>
-            <el-table-column align="center" label="商品英文名称" prop="englishName">
-            </el-table-column>
-            <el-table-column align="center" label="商品简称" prop="shortName"> </el-table-column>
-            <el-table-column align="center" label="商品描述" prop="goodsDesc"> </el-table-column>
-            <el-table-column align="center" label="商品品牌" prop="goodsBrand"> </el-table-column>
-            <el-table-column align="center" label="商品规格" prop="goodsSpec"> </el-table-column>
-            <!-- 操作列 -->
-            <el-table-column label="操作" align="center">
-                <template v-slot="scope">
-                    <el-button type="text" icon="el-icon-remove" @click="handleDelete(scope.row.id)"
-                        >删除</el-button
-                    >
-                    <el-button type="text" icon="el-icon-edit" @click="handleEdit(scope.row)"
-                        >编辑</el-button
-                    >
-                </template>
-            </el-table-column>
-        </el-table>
-        <div class="page-footer-box">
-            <el-pagination
-                class="text-right"
-                background
-                @current-change="pageChange"
-                layout="prev, pager, next"
-                :pageTotal="pageTotal"
-                :current-page="pageNo">
-            </el-pagination>
-        </div>
-        <edit-dialog
-            ref="editDialogRef"
-            :status="status"
-            @handleCloseDialog="handleCloseDialog"
-            @getDataList="getDataList"
-            :formData="formData"
-            v-model="visible">
-        </edit-dialog>
+        <h1>==table data list==</h1>
+        <button @click="getListData">get data</button>
+        <button @click="getListData2">get data2</button>
+        <ul>
+            <li v-for="item in tableData" :key="item.id">{{item.name}}</li>
+        </ul>
     </div>
 </template>
 <script lang="ts">
-import { getList, deleteItem, addItem, updateItem } from '@/api/goods/goodsListApi'
-import { defineComponent, onMounted, ref, reactive } from 'vue'
-import { ElMessage } from 'element-plus'
-import { ListQuery, TableList, DataList } from '@/type/goods/index'
-import EditDialog from './EditDialog.vue'
-import { ListClass } from '@/components/goods/goods'
+import { defineComponent, onMounted, ref, reactive } from "vue";
+// import { ElMessage } from 'element-plus'
+import EditDialog from "./EditDialog.vue";
+import "@/mock/mockServer";
+import http from "@/utils/http2/index";
+import { TableList } from '@/type/goods/index'
 
 export default defineComponent({
-    name: 'goodlist',
-    components: {
-        EditDialog,
-    },
-    props: {
-        msg: {
-            required: true,
-            default: () => '',
-            type: String,
-        },
-    },
-    setup(props) {
-        const status = ref(false)
-        const formData = reactive<TableList>({
-            id: '',
-            goodsName: '',
-            englishName: '',
-            shortName: '',
-            goodsDesc: '',
-            goodsBrand: '',
-            goodsSpec: '',
-        })
-        const visible = ref(false)
-        const addData = () => {
-            visible.value = true
-            status.value = false
-            formData.id = ''
-            formData.goodsName = ''
-            formData.englishName = ''
-            formData.shortName = ''
-            formData.goodsDesc = ''
-            formData.goodsBrand = ''
-            formData.goodsSpec = ''
-        }
-        const handleEdit = (row: TableList) => {
-            visible.value = true
-            status.value = true
-            formData.id = row.id
-            formData.goodsName = row.goodsName
-            formData.englishName = row.englishName
-            formData.shortName = row.shortName
-            formData.goodsDesc = row.goodsDesc
-            formData.goodsBrand = row.goodsBrand
-            formData.goodsSpec = row.goodsSpec
-        }
-        const handleCloseDialog = () => {
-            formData.id = ''
-            formData.goodsName = ''
-            formData.englishName = ''
-            formData.shortName = ''
-            formData.goodsDesc = ''
-            formData.goodsBrand = ''
-            formData.goodsSpec = ''
-            visible.value = false
-        }
-        // const pageNo = ref<number>(1)
-        // const loading = ref<boolean>(false)
-        // const pageTotal = ref<number>(1)
-        // const tableList = ref<TableList[]>([
-        //     {
-        //         id: '',
-        //         goodsName: '',
-        //         englishName: '',
-        //         shortName: '',
-        //         goodsDesc: '',
-        //         goodsbrand: '',
-        //         goodsSpec: '',
-        //     },
-        // ])
-        const listQuery = reactive<ListQuery>({
-            pageNo: 1, // 当前页码
-            pageSize: 10, // 单页显示数量
-            goodsName: '', // 项目名称
-        })
-        class TableClass extends ListClass { }
-        // 列表类
-        const {
-            searchFn,
-            getDataList,
-            pageNo,
-            pageSize,
-            pageChange,
-            loading,
-            tableList,
-            pageTotal,
-        } = new TableClass({
-            Api: {
-                listApi: getList,
-            }
-        })
+  name: "goodlist",
+  components: {
+    EditDialog,
+  },
+  props: {},
+  setup(props) {
+    const status = ref(false);
+    const state = reactive({
+        catName: [],
+        formData: [],
+        tableData: [{
+          id: '12987125',
+          name: '王小虎',
+          amount1: '621',
+          amount2: '2.2',
+          amount3: 17
+        }, {
+          id: '12987126',
+          name: '王小虎',
+          amount1: '539',
+          amount2: '4.1',
+          amount3: 15
+        }]
+    })
+    const formData1 = reactive<TableList>({
+        id: '',
+        goodsName: '',
+        englishName: '',
+        shortName: '',
+        goodsDesc: '',
+        goodsBrand: '',
+        goodsSpec: '',
+    })
 
-        // const getDataList = () => {
-        //     getList<DataList>(listQuery)
-        //         .then((res) => {
-        //             tableList.value = res.data.list
-        //             pageTotal.value = res.data.totalCount
-        //         })
-        //         .finally(() => {
-        //             loading.value = false
-        //         })
-        // }
-        const handleDelete = (val: string) => {
-            deleteItem<DataList>({ id: val }).then(() => {
-                ElMessage.success({
-                    message: '删除成功',
-                    type: 'success',
-                })
-                getDataList()
-            })
-        }
-        onMounted(() => {
-            loading: true
-            console.log(props.msg, 444)
-            getDataList()
-        })
-        // const searchFn = () => {
-        //     getDataList()
-        // }
-        // const pageChange = (val: number) => {
-        //     listQuery.pageNo = val
-        //     getDataList()
-        // }
+    onMounted(() => {
+        //state.catName =
+        getListData()
+    });
 
-        return {
-            status,
-            visible,
-            pageNo,
-            pageSize,
-            tableList,
-            formData,
-            listQuery,
-            getDataList,
-            pageChange,
-            searchFn,
-            loading,
-            pageTotal,
-            handleDelete,
-            handleEdit,
-            handleCloseDialog,
-            addData,
-        }
-    },
-})
+    const getListData = () => {
+        http.get("/getlistdata").then((res: any) => {
+
+          state.formData = res.data.data.list
+          console.log("type1:", typeof(res.data.data.list))
+        console.log("res.data>>>", res.data);
+        console.log("formData>>>", state.formData);
+      });
+    };
+
+    const getListData2 =()=>{
+          console.log("type2:", typeof( state.tableData))
+
+        console.log("tableData>>>", state.tableData);
+        console.log("formData>>>", state.formData);
+    }
+
+    return {
+      getListData,
+      getListData2,
+      ...state,
+    };
+  },
+});
 </script>
 <style scoped>
 .table-box {
-    height: 640px;
-    overflow: auto;
+  height: 640px;
+  overflow: auto;
 }
 .page-footer-box {
-    text-align: right;
-    margin-top: 15px;
+  text-align: right;
+  margin-top: 15px;
 }
 </style>
